@@ -1,1 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Anjali 🎀</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(180deg,#ffd6e8,#fff);
+  overflow-x:hidden;
+}
+
+/* Glitter cursor */
+.glitter{
+  position:fixed;
+  width:8px;
+  height:8px;
+  background:radial-gradient(circle,#ff69b4,#fff);
+  border-radius:50%;
+  pointer-events:none;
+  animation:fade 1s linear forwards;
+}
+@keyframes fade{
+  to{opacity:0;transform:scale(2)}
+}
+
+/* Popup */
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.popup{
+  background:#fff0f7;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  max-width:400px;
+  box-shadow:0 0 40px pink;
+}
+.popup h1{color:#ff1493}
+button{
+  background:#ff69b4;
+  border:none;
+  padding:10px 20px;
+  border-radius:20px;
+  color:white;
+  cursor:pointer;
+  margin:8px;
+}
+
+/* Slideshow */
+.section{
+  padding:50px 20px;
+  text-align:center;
+}
+.slideshow img, video{
+  width:300px;
+  border-radius:20px;
+  box-shadow:0 0 20px pink;
+}
+
+/* Hidden */
+.hidden{display:none}
+</style>
+</head>
+
+<body>
+
+<!-- 🎉 Birthday Popup -->
+<div class="overlay" id="popup">
+  <div class="popup">
+    <h1>🎀 HAPPY BIRTHDAY ANJALI 🎀</h1>
+    <p>You make the world prettier just by existing 💕</p>
+    <button onclick="startShow()">Start 💖</button>
+  </div>
+</div>
+
+<!-- 🎶 Background Music -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<!-- 🖼️ PHOTO SLIDESHOW -->
+<div class="section" id="photos">
+  <h2>✨ The Prettiest Girl in the World ✨</h2>
+  <div class="slideshow">
+    <img id="photoSlide" src="p1.jpg">
+  </div>
+</div>
+
+<!-- 🎥 VIDEO SLIDESHOW -->
+<div class="section hidden" id="videos">
+  <h2>🎥 Moments That Matter</h2>
+  <video id="videoSlide" controls></video>
+</div>
+
+<!-- 💌 LETTER -->
+<div class="section">
+  <button onclick="openLetter()">💌 Open Letter</button>
+</div>
+
+<div class="overlay hidden" id="letter">
+  <div class="popup">
+    <h2>For You 💖</h2>
+    <p>
+      Happy Birthday Anjali 🌸<br><br>
+      You are grace, kindness and sunshine in human form.<br>
+      Never forget how special you are 💕
+    </p>
+    <button onclick="closeLetter()">Close</button>
+  </div>
+</div>
+
+<script>
+/* Glitter mouse */
+document.addEventListener("mousemove",e=>{
+  const g=document.createElement("div");
+  g.className="glitter";
+  g.style.left=e.clientX+"px";
+  g.style.top=e.clientY+"px";
+  document.body.appendChild(g);
+  setTimeout(()=>g.remove(),1000);
+});
+
+/* Slideshows */
+const photos=["p1.jpg","p2.jpg","p3.jpg","p4.jpg"];
+const videos=["v1.mp4","v2.mp4","v3.mp4"];
+let p=0,v=0;
+
+function startShow(){
+  document.getElementById("popup").style.display="none";
+  document.getElementById("bgMusic").play();
+  setInterval(()=>{
+    p++;
+    if(p<photos.length){
+      document.getElementById("photoSlide").src=photos[p];
+    }else{
+      document.getElementById("photos").classList.add("hidden");
+      document.getElementById("videos").classList.remove("hidden");
+      document.getElementById("bgMusic").pause();
+      playVideos();
+    }
+  },3000);
+}
+
+function playVideos(){
+  const vid=document.getElementById("videoSlide");
+  vid.src=videos[v];
+  vid.play();
+  vid.onended=()=>{
+    v++;
+    if(v<videos.length){
+      vid.src=videos[v];
+      vid.play();
+    }
+  }
+}
+
+/* Letter */
+function openLetter(){
+  document.getElementById("letter").classList.remove("hidden");
+}
+function closeLetter(){
+  document.getElementById("letter").classList.add("hidden");
+}
+</script>
+
+</body>
+</html>
+
 
