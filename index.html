@@ -4,30 +4,53 @@
 <meta charset="UTF-8">
 <title>Happy Birthday Anjali 🎀</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
   font-family:'Poppins',sans-serif;
-  background:#ffe6f0;
+  background:#ffe4f1;
   overflow-x:hidden;
 }
 
-/* 🎀 Bow background */
+/* 🎀 AESTHETIC BOW BACKGROUND */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background-image:url("https://i.imgur.com/WvZJXyK.png");
-  background-size:200px;
-  opacity:0.25;
+  background-image:url("https://i.imgur.com/9zQZ6mN.png");
+  background-size:180px;
+  opacity:0.35;
   z-index:-1;
 }
 
-/* Header */
+/* ENTRY OVERLAY */
+#entry{
+  position:fixed;
+  inset:0;
+  background:#ffd6e8;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+#entry button{
+  font-family:'Pacifico',cursive;
+  font-size:28px;
+  padding:20px 50px;
+  border:none;
+  border-radius:50px;
+  background:#ff4fa3;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 15px 30px rgba(255,0,128,.4);
+}
+
+/* HEADER */
 header{
-  height:100vh;
+  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -35,34 +58,34 @@ header{
   text-align:center;
 }
 header h1{
-  font-size:60px;
+  font-family:'Pacifico',cursive;
+  font-size:70px;
   color:#ff2f92;
 }
 header p{
-  font-size:20px;
-  margin-top:10px;
+  font-size:22px;
+  margin-top:15px;
 }
 
-/* Buttons */
+/* BUTTON */
 .btn{
-  margin-top:30px;
-  padding:14px 32px;
-  background:#ff5ca8;
+  margin-top:35px;
+  padding:16px 36px;
+  background:#ff69b4;
   color:white;
   border:none;
-  border-radius:30px;
-  font-size:18px;
+  border-radius:40px;
+  font-size:20px;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(255,0,128,.3);
 }
 
-/* Slideshow */
+/* SLIDESHOW */
 .slideshow{
-  max-width:500px;
+  max-width:520px;
   margin:80px auto;
-  border-radius:30px;
+  border-radius:35px;
   overflow:hidden;
-  box-shadow:0 20px 40px rgba(255,105,180,.4);
+  box-shadow:0 25px 50px rgba(255,105,180,.45);
 }
 .slideshow img{
   width:100%;
@@ -70,7 +93,7 @@ header p{
 }
 .slideshow img.active{display:block}
 
-/* Letter popup */
+/* LETTER */
 .overlay{
   position:fixed;
   inset:0;
@@ -83,37 +106,38 @@ header p{
 .letter{
   background:#fff0f7;
   padding:40px;
-  border-radius:24px;
-  max-width:800px;
-  max-height:80vh;
+  border-radius:30px;
+  max-width:900px;
+  max-height:85vh;
   overflow-y:auto;
-  color:#5a0035;
+  color:#6b0040;
 }
 .close{
   text-align:right;
-  font-size:20px;
+  font-size:22px;
   cursor:pointer;
 }
 
-/* Footer */
+/* FOOTER */
 footer{
   text-align:center;
-  padding:50px;
-  font-size:22px;
+  padding:60px;
+  font-size:24px;
+  font-family:'Pacifico',cursive;
   color:#ff2f92;
 }
 
-/* Glitter cursor */
-.glitter{
+/* ✨ GLITTER CURSOR */
+.sparkle{
   position:fixed;
-  width:6px;
-  height:6px;
-  background:radial-gradient(circle,#fff,#ff69b4);
-  pointer-events:none;
+  width:10px;
+  height:10px;
+  background:radial-gradient(circle,#fff,#ff69b4,#ff1493);
   border-radius:50%;
-  animation:fade 1s linear forwards;
+  pointer-events:none;
+  animation:sparkle 1s linear forwards;
 }
-@keyframes fade{
+@keyframes sparkle{
   to{opacity:0;transform:scale(3)}
 }
 </style>
@@ -121,10 +145,15 @@ footer{
 
 <body>
 
-<!-- 🎶 Autoplay Music -->
-<audio autoplay loop>
+<!-- 🎶 MUSIC (plays after click) -->
+<audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<!-- ENTRY -->
+<div id="entry">
+  <button onclick="enterSite()">💖 Tap to Enter 💖</button>
+</div>
 
 <header>
   <h1>Happy Birthday Anjali 🎀</h1>
@@ -132,7 +161,7 @@ footer{
   <button class="btn" onclick="openLetter()">💌 Open Letter</button>
 </header>
 
-<!-- 📸 Slideshow -->
+<!-- SLIDESHOW -->
 <div class="slideshow">
   <img src="p1.jpeg" class="active">
   <img src="p2.jpeg">
@@ -143,11 +172,10 @@ footer{
   <img src="p7.jpeg">
 </div>
 
-<!-- 💌 Letter -->
+<!-- LETTER -->
 <div class="overlay" id="letterBox">
   <div class="letter">
     <div class="close" onclick="closeLetter()">✖</div>
-
     <p>
 Hey, Anjali. First of all, Wishing you a very happiest birthday.
 I still remember the first time we met, I was so happy to Make such a beautiful friend in this university.
@@ -176,9 +204,15 @@ Meri Miss Wonderful ♥️✨🧿🎂🎊
   Always grateful for you, today and always 💖
 </footer>
 
-<!-- ✨ JS -->
 <script>
-/* Slideshow */
+/* ENTER SITE */
+function enterSite(){
+  document.getElementById('entry').style.display='none';
+  document.getElementById('bgMusic').play();
+  confetti();
+}
+
+/* SLIDESHOW */
 let slides=document.querySelectorAll('.slideshow img');
 let i=0;
 setInterval(()=>{
@@ -187,20 +221,43 @@ setInterval(()=>{
   slides[i].classList.add('active');
 },2500);
 
-/* Letter */
+/* LETTER */
 function openLetter(){document.getElementById('letterBox').style.display='flex'}
 function closeLetter(){document.getElementById('letterBox').style.display='none'}
 
-/* Glitter Cursor */
+/* GLITTER CURSOR */
 document.addEventListener('mousemove',e=>{
-  let g=document.createElement('div');
-  g.className='glitter';
-  g.style.left=e.clientX+'px';
-  g.style.top=e.clientY+'px';
-  document.body.appendChild(g);
-  setTimeout(()=>g.remove(),1000);
+  let s=document.createElement('div');
+  s.className='sparkle';
+  s.style.left=e.clientX+'px';
+  s.style.top=e.clientY+'px';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1000);
 });
+
+/* CONFETTI */
+function confetti(){
+  for(let i=0;i<150;i++){
+    let c=document.createElement('div');
+    c.style.position='fixed';
+    c.style.left=Math.random()*100+'vw';
+    c.style.top='-10px';
+    c.style.width='10px';
+    c.style.height='10px';
+    c.style.background='#ff69b4';
+    c.style.opacity=Math.random();
+    c.style.animation=`fall ${Math.random()*3+2}s linear`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5000);
+  }
+}
 </script>
+
+<style>
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
+}
+</style>
 
 </body>
 </html>
