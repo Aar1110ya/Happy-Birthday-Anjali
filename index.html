@@ -11,26 +11,28 @@
 
 body{
   font-family:'Poppins',sans-serif;
-  background:#ffe4f1;
+  background:#ffe6f2;
   overflow-x:hidden;
 }
 
-/* 🎀 AESTHETIC BOW BACKGROUND */
+/* 🎀 BARBIE BOW PATTERN (CSS, NOT IMAGES) */
 body::before{
-  content:"";
+  content:"🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀 🎀";
   position:fixed;
   inset:0;
-  background-image:url("https://i.imgur.com/9zQZ6mN.png");
-  background-size:180px;
-  opacity:0.35;
+  font-size:60px;
+  opacity:0.15;
+  line-height:140px;
+  word-spacing:80px;
+  pointer-events:none;
   z-index:-1;
 }
 
-/* ENTRY OVERLAY */
+/* ENTRY SCREEN */
 #entry{
   position:fixed;
   inset:0;
-  background:#ffd6e8;
+  background:linear-gradient(135deg,#ff9acb,#ffd6ea);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -38,14 +40,14 @@ body::before{
 }
 #entry button{
   font-family:'Pacifico',cursive;
-  font-size:28px;
-  padding:20px 50px;
+  font-size:30px;
+  padding:22px 55px;
   border:none;
   border-radius:50px;
-  background:#ff4fa3;
+  background:#ff3d9e;
   color:white;
   cursor:pointer;
-  box-shadow:0 15px 30px rgba(255,0,128,.4);
+  box-shadow:0 20px 40px rgba(255,0,150,.5);
 }
 
 /* HEADER */
@@ -59,8 +61,8 @@ header{
 }
 header h1{
   font-family:'Pacifico',cursive;
-  font-size:70px;
-  color:#ff2f92;
+  font-size:72px;
+  color:#ff1f8f;
 }
 header p{
   font-size:22px;
@@ -70,7 +72,7 @@ header p{
 /* BUTTON */
 .btn{
   margin-top:35px;
-  padding:16px 36px;
+  padding:16px 40px;
   background:#ff69b4;
   color:white;
   border:none;
@@ -85,7 +87,7 @@ header p{
   margin:80px auto;
   border-radius:35px;
   overflow:hidden;
-  box-shadow:0 25px 50px rgba(255,105,180,.45);
+  box-shadow:0 30px 60px rgba(255,105,180,.45);
 }
 .slideshow img{
   width:100%;
@@ -97,20 +99,20 @@ header p{
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.5);
+  background:rgba(0,0,0,.6);
   display:none;
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 .letter{
-  background:#fff0f7;
-  padding:40px;
+  background:#fff0f8;
+  padding:45px;
   border-radius:30px;
   max-width:900px;
   max-height:85vh;
   overflow-y:auto;
-  color:#6b0040;
+  color:#6b003f;
 }
 .close{
   text-align:right;
@@ -122,17 +124,17 @@ header p{
 footer{
   text-align:center;
   padding:60px;
-  font-size:24px;
+  font-size:26px;
   font-family:'Pacifico',cursive;
   color:#ff2f92;
 }
 
-/* ✨ GLITTER CURSOR */
+/* ✨ REAL GLITTER CURSOR */
 .sparkle{
   position:fixed;
-  width:10px;
-  height:10px;
-  background:radial-gradient(circle,#fff,#ff69b4,#ff1493);
+  width:8px;
+  height:8px;
+  background:radial-gradient(circle,#fff,#ff9ad5,#ff1f8f);
   border-radius:50%;
   pointer-events:none;
   animation:sparkle 1s linear forwards;
@@ -145,14 +147,14 @@ footer{
 
 <body>
 
-<!-- 🎶 MUSIC (plays after click) -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <!-- ENTRY -->
 <div id="entry">
-  <button onclick="enterSite()">💖 Tap to Enter 💖</button>
+  <button onclick="enterSite()">🎀 Enter Barbie World 🎀</button>
 </div>
 
 <header>
@@ -161,7 +163,6 @@ footer{
   <button class="btn" onclick="openLetter()">💌 Open Letter</button>
 </header>
 
-<!-- SLIDESHOW -->
 <div class="slideshow">
   <img src="p1.jpeg" class="active">
   <img src="p2.jpeg">
@@ -172,7 +173,6 @@ footer{
   <img src="p7.jpeg">
 </div>
 
-<!-- LETTER -->
 <div class="overlay" id="letterBox">
   <div class="letter">
     <div class="close" onclick="closeLetter()">✖</div>
@@ -205,7 +205,6 @@ Meri Miss Wonderful ♥️✨🧿🎂🎊
 </footer>
 
 <script>
-/* ENTER SITE */
 function enterSite(){
   document.getElementById('entry').style.display='none';
   document.getElementById('bgMusic').play();
@@ -222,10 +221,10 @@ setInterval(()=>{
 },2500);
 
 /* LETTER */
-function openLetter(){document.getElementById('letterBox').style.display='flex'}
-function closeLetter(){document.getElementById('letterBox').style.display='none'}
+function openLetter(){letterBox.style.display='flex'}
+function closeLetter(){letterBox.style.display='none'}
 
-/* GLITTER CURSOR */
+/* GLITTER */
 document.addEventListener('mousemove',e=>{
   let s=document.createElement('div');
   s.className='sparkle';
@@ -237,7 +236,7 @@ document.addEventListener('mousemove',e=>{
 
 /* CONFETTI */
 function confetti(){
-  for(let i=0;i<150;i++){
+  for(let i=0;i<120;i++){
     let c=document.createElement('div');
     c.style.position='fixed';
     c.style.left=Math.random()*100+'vw';
@@ -261,6 +260,7 @@ function confetti(){
 
 </body>
 </html>
+
 
 
 
